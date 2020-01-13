@@ -1,15 +1,19 @@
 name: full_text_search
-description: A new Flutter package project.
-version: 0.0.1
+description: Full-text search that takes advantages of isolates to prevent locking the main thread
+version: 0.4.4
 author:
 homepage:
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.6.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  equatable: any
+  logging: any
+  sunny_dart_util:
+    path: ../sunny_dart_util
 
 dev_dependencies:
   flutter_test:
