@@ -170,10 +170,10 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
-  sunny_dart_util:
+  sunny_dart:
     dependency: "direct main"
     description:
-      path: "../sunny_dart_util"
+      path: "../sunny_dart"
       relative: true
     source: path
     version: "0.4.4"

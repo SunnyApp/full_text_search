@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
-import 'package:sunny_dart_util/typedefs.dart';
+import 'package:sunny_dart/typedefs.dart';
 
 import 'matching.dart';
 import 'scoring.dart';

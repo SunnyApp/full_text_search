@@ -2,7 +2,7 @@ import 'dart:core';
 
 import 'package:logging/logging.dart';
 import 'package:meta/meta.dart';
-import 'package:sunny_dart_util/sunny_dart_util.dart';
+import 'package:sunny_dart/sunny_dart.dart';
 
 import 'matching.dart';
 import 'scoring.dart';
