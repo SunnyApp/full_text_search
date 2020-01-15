@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   equatable: ^1.0.2
+  collection: ^1.14.11
+  meta: ^1.1.8
   logging: ^0.11.3+2  
   sunny_dart_util:
     path: ../sunny_dart_util
