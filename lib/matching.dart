@@ -79,9 +79,9 @@ class EqualsMatch with TermMatcherMixin {
   EqualsMatch();
 }
 
-/// The result of a TermMatcher operation; essentially represents a positive match
+/// The result of a [TermMatcher] operation; essentially represents a positive match of a search term against a token.
 abstract class TermMatch {
-  /// Key of the matcher that produced this match.
+  /// Key of the matcher that produced this match.  eg 'contains', 'equals'
   String get key;
 
   /// The search term or partial search term that was matched

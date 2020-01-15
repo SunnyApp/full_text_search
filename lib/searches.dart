@@ -12,8 +12,6 @@ typedef Tokenizer<T> = List<dynamic> Function(T);
 
 final searchTermTokenizer = RegExp("[\\s\-\.]");
 
-
-
 /// Matches items in an array with user-provided search string.  The input is split into multiple terms, and there is an option
 /// to ensure that each term is matched within the tokens.
 /// [term] The search term.  Will be tokenized internally
