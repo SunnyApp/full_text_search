@@ -5,7 +5,8 @@ import 'package:sunny_dart_util/typedefs.dart';
 import 'matching.dart';
 import 'scoring.dart';
 
-class TermSearchResults<T> extends DelegatingList<TermSearchResult<T>> implements Equatable {
+class TermSearchResults<T> extends DelegatingList<TermSearchResult<T>>
+    implements Equatable {
   List<TermSearchResult<T>> get results => this;
 
   TermSearchResults(List<TermSearchResult<T>> results) : super(results);
@@ -16,7 +17,9 @@ class TermSearchResults<T> extends DelegatingList<TermSearchResult<T>> implement
   }
 }
 
-class TermSearchResult<T> with EquatableMixin implements Comparable<TermSearchResult<T>> {
+class TermSearchResult<T>
+    with EquatableMixin
+    implements Comparable<TermSearchResult<T>> {
   final Score score;
 
   final T result;
@@ -33,7 +36,9 @@ class TermSearchResult<T> with EquatableMixin implements Comparable<TermSearchRe
     return _scoreValue ??= score.calculate();
   }
 
-  TermSearchResult(this.result, this.matchedTerms, this.matchedTokens, this.matchAll) : score = Score.zero();
+  TermSearchResult(
+      this.result, this.matchedTerms, this.matchedTokens, this.matchAll)
+      : score = Score.zero();
 
   @override
   int compareTo(lhs) {
@@ -66,7 +71,8 @@ class TokenCheck extends Equatable {
   @override
   List<Object> get props => [searchTerm, tokenToCheck, result];
 
-  TokenCheck withResult(TokenCheckResult result) => TokenCheck.result(searchTerm, tokenToCheck, result);
+  TokenCheck withResult(TokenCheckResult result) =>
+      TokenCheck.result(searchTerm, tokenToCheck, result);
 
   bool operator >(final other) {
     if (other == null) return true;

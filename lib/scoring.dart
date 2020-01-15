@@ -15,7 +15,8 @@ abstract class SearchScoring {
 /// Scoring that applies a boost if all search terms are a match
 class MatchAllTermsScoring extends SearchScoring {
   void scoreTerm(FullTextSearch search, TermSearchResult term, Score current) =>
-      current += Boost.amount(term.matchAll ? (term.matchedTerms.length * 0.5) : 0, "matchAll");
+      current += Boost.amount(
+          term.matchAll ? (term.matchedTerms.length * 0.5) : 0, "matchAll");
 
   const MatchAllTermsScoring() : super();
 }
@@ -23,7 +24,8 @@ class MatchAllTermsScoring extends SearchScoring {
 /// Applies a linear boost based on the number of search terms that were matched.  See [MatchAllTermsScoring]
 class MatchedTermsScoring extends SearchScoring {
   const MatchedTermsScoring() : super();
-  void scoreTerm(FullTextSearch search, TermSearchResult term, Score current) => current += Boost.amount(
+  void scoreTerm(FullTextSearch search, TermSearchResult term, Score current) =>
+      current += Boost.amount(
         term.matchedTerms.length.toDouble(),
         () => "terms_x${term.matchedTerms.length}",
       );
@@ -33,7 +35,8 @@ class MatchedTermsScoring extends SearchScoring {
 /// prefix match, or a contains match
 class MatchedTokensScoring extends SearchScoring {
   final Boost matchedTokenBoost;
-  const MatchedTokensScoring([this.matchedTokenBoost = const Boost.amount(1, "tokenPrefix")])
+  const MatchedTokensScoring(
+      [this.matchedTokenBoost = const Boost.amount(1, "tokenPrefix")])
       : assert(matchedTokenBoost != null),
         super();
   void scoreTerm(FullTextSearch search, TermSearchResult term, Score current) {
