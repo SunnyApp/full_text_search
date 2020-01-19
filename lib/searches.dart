@@ -144,7 +144,7 @@ class FullTextSearch<T> {
     final sorted = [...results];
     sorted.sort((a, b) => a.compareTo(b));
     results = sorted;
-    return [...?results];
+    return limit != null ? [...?results.take(limit)] : [...?results];
   }
 
   /// Executes a search and returns a stream of individual term results, unsorted and unfiltered.
