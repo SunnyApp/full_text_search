@@ -37,7 +37,7 @@ packages:
     source: hosted
     version: "1.1.2"
   collection:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: collection
       url: "https://pub.dartlang.org"
@@ -69,6 +69,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_native_timezone:
+    dependency: transitive
+    description:
+      name: flutter_native_timezone
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -81,6 +88,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.4"
+  inflection2:
+    dependency: transitive
+    description:
+      name: inflection2
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.3"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.16.1"
   logging:
     dependency: "direct main"
     description:
@@ -96,7 +117,7 @@ packages:
     source: hosted
     version: "0.12.6"
   meta:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: meta
       url: "https://pub.dartlang.org"
@@ -163,6 +184,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  stream_transform:
+    dependency: transitive
+    description:
+      name: stream_transform
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   string_scanner:
     dependency: transitive
     description:
@@ -191,6 +219,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.11"
+  timezone:
+    dependency: transitive
+    description:
+      name: timezone
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.6"
   typed_data:
     dependency: transitive
     description:
@@ -198,6 +233,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.6"
+  uuid:
+    dependency: transitive
+    description:
+      name: uuid
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.4"
   vector_math:
     dependency: transitive
     description:
