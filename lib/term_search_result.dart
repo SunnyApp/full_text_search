@@ -5,8 +5,7 @@ import 'package:sunny_dart/typedefs.dart';
 import 'matching.dart';
 import 'scoring.dart';
 
-class TermSearchResults<T> extends DelegatingList<TermSearchResult<T>>
-    implements Equatable {
+class TermSearchResults<T> extends DelegatingList<TermSearchResult<T>> implements Equatable {
   List<TermSearchResult<T>> get results => this;
 
   TermSearchResults(List<TermSearchResult<T>> results) : super(results);
@@ -17,15 +16,22 @@ class TermSearchResults<T> extends DelegatingList<TermSearchResult<T>>
   }
 }
 
-class TermSearchResult<T>
-    with EquatableMixin
-    implements Comparable<TermSearchResult<T>> {
+class TermSearchResult<T> with EquatableMixin implements Comparable<TermSearchResult<T>> {
   final Score score;
 
   final T result;
 
+  /// The search terms that were successfully matched.  For "fuzzy" matches, you may only match one out of 3 terms, eg.
+  /// user types: George Harrison ate pizza
+  /// we matched: George Jones ate chips
+  /// [matchedTerms] = George, ate
   final Set<String> matchedTerms;
 
+  /// The tokens that were successfully matched.
+  /// user types: George Harrison ate pizza
+  /// we tokenized: My mate George Jones threw poker chips in Georgetown with his wife Atena.
+  /// [matchedTerms] = George, ate
+  /// [matchedTokens] = Georgetown, Atena, George, mate
   final Set<TermMatch> matchedTokens;
 
   final bool matchAll;
@@ -36,9 +42,7 @@ class TermSearchResult<T>
     return _scoreValue ??= score.calculate();
   }
 
-  TermSearchResult(
-      this.result, this.matchedTerms, this.matchedTokens, this.matchAll)
-      : score = Score.zero();
+  TermSearchResult(this.result, this.matchedTerms, this.matchedTokens, this.matchAll) : score = Score.zero();
 
   @override
   int compareTo(lhs) {
@@ -71,8 +75,7 @@ class TokenCheck extends Equatable {
   @override
   List<Object> get props => [searchTerm, tokenToCheck, result];
 
-  TokenCheck withResult(TokenCheckResult result) =>
-      TokenCheck.result(searchTerm, tokenToCheck, result);
+  TokenCheck withResult(TokenCheckResult result) => TokenCheck.result(searchTerm, tokenToCheck, result);
 
   bool operator >(final other) {
     if (other == null) return true;
