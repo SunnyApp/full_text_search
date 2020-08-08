@@ -1,6 +1,5 @@
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
-import 'package:sunny_dart/typedefs.dart';
 
 import 'matching.dart';
 import 'scoring.dart';
@@ -170,23 +169,4 @@ class TokenizedItem<T> extends Equatable {
 
   @override
   List<Object> get props => [tokens, result];
-}
-
-int _compareBool(bool a, bool b) {
-  if (a == b) return 0;
-  if (a == null && b == null) return 0;
-  if (a != null && b == null) return 1;
-  if (a == null && b != null) return -1;
-  return a ? 1 : -1;
-}
-
-T _findResult<T>({List<Factory<T>> checks, T exclude}) {
-  for (var check in checks) {
-    if (check == null) continue;
-    final result = check();
-    if (result != null && (exclude != null && result != exclude)) {
-      return result;
-    }
-  }
-  return null;
 }
