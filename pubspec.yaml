@@ -1,10 +1,10 @@
 name: full_text_search
 description: Full-text search that takes advantages of isolates to prevent locking the main thread
-version: 0.4.4
+version: 0.5.4
 homepage: https://github.com/SunnyApp/full_text_search
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: ">=2.8.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -12,9 +12,8 @@ dependencies:
   collection: ^1.14.11
   equatable: ^1.2.3
   logging: ^0.11.4
-  meta: ^1.1.8
-  sunny_dart:
-    path: ../sunny_dart
+  meta: ^1.2.2
+  sunny_dart: ^0.5.8
 
 dev_dependencies:
   flutter_test:
