@@ -1,6 +1,6 @@
 name: full_text_search
 description: Full-text search that takes advantages of isolates to prevent locking the main thread
-version: 0.5.4
+version: 0.5.5
 homepage: https://github.com/SunnyApp/full_text_search
 
 environment:
@@ -12,7 +12,7 @@ dependencies:
   collection: ^1.14.11
   equatable: ^1.2.3
   logging: ^0.11.4
-  meta: ^1.2.2
+  meta: ^1.1.8
   sunny_dart: ^0.5.8
 
 dev_dependencies:
