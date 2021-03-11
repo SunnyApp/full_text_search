@@ -1,0 +1,33 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+# Uncomment the line if you want fastlane to automatically update itself
+
+fastlane_require 'semantic'
+fastlane_require 'semantic/core_ext'
+require 'fastlane'
+fastlane_require 'fileutils'
+fastlane_require 'open3'
+
+p $VERBOSE
+
+lane :publish do |options|
+  pub_release options
+end
+
+lane :build_runner do |options|
+  sunny_build_runner options
+end
+
+lane :icons do
+  download_icons
+  build_icon_fonts
+end
