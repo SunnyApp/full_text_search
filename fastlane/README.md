@@ -20,6 +20,11 @@ or alternatively using `brew install fastlane`
 fastlane publish
 ```
 
+### build_runner
+```
+fastlane build_runner
+```
+
 ### icons
 ```
 fastlane icons
