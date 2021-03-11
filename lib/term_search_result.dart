@@ -19,8 +19,8 @@ class TermSearchResults<T> extends DelegatingList<TermSearchResult<T>>
   bool get stringify => true;
 }
 
-class TermSearchResult<T>
-    with EquatableMixin
+// ignore: must_be_immutable
+class TermSearchResult<T> extends Equatable
     implements Comparable<TermSearchResult<T>> {
   final Score score;
 
@@ -41,7 +41,7 @@ class TermSearchResult<T>
 
   final bool matchAll;
 
-  double _scoreValue;
+  double? _scoreValue;
 
   double get scoreValue {
     return _scoreValue ??= score.calculate();
@@ -53,17 +53,20 @@ class TermSearchResult<T>
 
   @override
   int compareTo(lhs) {
-    if (lhs is TermSearchResult) {
+    if (lhs is TermSearchResult<T>) {
       final rhs = this;
       if (lhs == rhs) return 0;
-      return lhs.scoreValue?.compareTo(rhs?.scoreValue ?? 0) ?? -1;
+      var scoreA = rhs.scoreValue;
+      var scoreB = lhs.scoreValue;
+      if (scoreA == 0 && scoreB == 0) return 1;
+      return scoreB.compareTo(scoreA);
     } else {
       return -1;
     }
   }
 
   @override
-  List<Object> get props => [result, matchedTerms, matchedTokens, matchAll];
+  List<Object?> get props => [result, matchedTerms, matchedTokens, matchAll];
 
   @override
   String toString() {
@@ -74,35 +77,35 @@ class TermSearchResult<T>
 class TokenCheck extends Equatable {
   final String searchTerm;
   final Token tokenToCheck;
-  final TokenCheckResult result;
+  final TokenCheckResult? result;
 
-  TokenCheck.check(this.searchTerm, this.tokenToCheck) : result = null;
-  TokenCheck.result(this.searchTerm, this.tokenToCheck, this.result);
+  const TokenCheck.check(this.searchTerm, this.tokenToCheck) : result = null;
+
+  const TokenCheck.result(this.searchTerm, this.tokenToCheck, this.result);
 
   @override
-  List<Object> get props => [searchTerm, tokenToCheck, result];
+  List<Object?> get props => [searchTerm, tokenToCheck, result];
 
   TokenCheck withResult(TokenCheckResult result) =>
       TokenCheck.result(searchTerm, tokenToCheck, result);
 
   bool operator >(final other) {
     if (other == null) return true;
-    TokenCheckResult type;
+    TokenCheckResult? type;
     if (other is TokenCheck) {
       type = other.result;
     } else if (other is TokenCheckResult) {
       type = other;
     }
     if (type == null) throw "Can't compare to ${other?.runtimeType}";
-    return type > this.result;
+    return type > result;
   }
 }
 
 enum TokenCheckResult { equals, startsWith, contains, none }
 
 extension TokenCheckResultExt on TokenCheckResult {
-  bool operator >(TokenCheckResult other) {
-    if (this == null) return false;
+  bool operator >(TokenCheckResult? other) {
     if (this == other) return false;
     switch (this) {
       case TokenCheckResult.equals:
@@ -123,13 +126,15 @@ class Token extends Equatable {
   final String token;
   final String name;
 
-  Token(String token, {String name})
-      : token = token?.toLowerCase(),
+  Token(String token, {String? name})
+      : token = token.toLowerCase(),
         name = name ?? token;
 
   bool equals(String term) => token == term;
-  bool startsWith(String term) => token?.startsWith(term) == true;
-  bool contains(String term) => token?.contains(term) == true;
+
+  bool startsWith(String term) => token.startsWith(term) == true;
+
+  bool contains(String term) => token.contains(term) == true;
 
   @override
   List<Object> get props {
@@ -139,22 +144,22 @@ class Token extends Equatable {
   @override
   String toString() {
     if (name.toLowerCase() != token.toLowerCase()) {
-      return "$name: $token";
+      return '$name: $token';
     } else {
-      return "$token";
+      return '$token';
     }
   }
 }
 
 extension TokenList on List<Token> {
-  void addToken(String token, [String name]) {
+  void addToken(String token, [String? name]) {
     add(Token(token, name: name));
   }
 
-  void addNamed(String name, Iterable<String> tokens) {
+  void addNamed(String name, Iterable<String?> tokens) {
     for (final t in tokens) {
       if (t?.isNotEmpty == true) {
-        add(Token(t, name: name));
+        add(Token(t!, name: name));
       }
     }
   }
@@ -165,8 +170,8 @@ class TokenizedItem<T> extends Equatable {
 
   final T result;
 
-  TokenizedItem(this.tokens, this.result);
+  const TokenizedItem(this.tokens, this.result);
 
   @override
-  List<Object> get props => [tokens, result];
+  List<Object?> get props => [tokens, result];
 }

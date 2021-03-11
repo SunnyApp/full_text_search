@@ -25,9 +25,10 @@ abstract class TermMatcher implements Comparable<TermMatcher> {
 mixin TermMatcherMixin implements TermMatcher {
   @override
   int compareTo(TermMatcher other) {
-    return this.priority.compareTo(other.priority);
+    return priority.compareTo(other.priority);
   }
 
+  @override
   int get priority => defaultMatcherPriority;
 }
 
@@ -50,6 +51,7 @@ class StartsWithMatch with TermMatcherMixin {
 }
 
 class ContainsMatch with TermMatcherMixin {
+  @override
   List<TermMatch> apply<T>(FullTextSearch<T> search, TokenizedItem<T> item,
       String term, Token token) {
     term = term.toLowerCase();
@@ -59,6 +61,7 @@ class ContainsMatch with TermMatcherMixin {
     ];
   }
 
+  @override
   int get priority => defaultMatcherPriority + 100;
 
   @override
@@ -67,6 +70,7 @@ class ContainsMatch with TermMatcherMixin {
 }
 
 class EqualsMatch with TermMatcherMixin {
+  @override
   List<TermMatch> apply<T>(FullTextSearch<T> search, TokenizedItem<T> item,
       String term, Token token) {
     term = term.toLowerCase();
@@ -79,6 +83,7 @@ class EqualsMatch with TermMatcherMixin {
   String get key => matchKey;
   static const matchKey = "equals";
 
+  @override
   int get priority => defaultMatcherPriority - 200;
 
   EqualsMatch();
@@ -107,18 +112,18 @@ abstract class TermMatch {
 
 class _TermMatch extends Equatable implements TermMatch {
   /// Key of the matcher that produced this match.
+  @override
   final String key;
 
   /// The search term or partial search term that was matched
+  @override
   final String term;
 
   /// The token that matched
+  @override
   final Token matchedToken;
 
-  const _TermMatch(this.key, this.term, this.matchedToken)
-      : assert(key != null),
-        assert(term != null),
-        assert(matchedToken != null);
+  const _TermMatch(this.key, this.term, this.matchedToken);
 
   @override
   List<Object> get props => [key, term, matchedToken];

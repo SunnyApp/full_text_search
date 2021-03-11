@@ -14,6 +14,7 @@ abstract class SearchScoring {
 
 /// Scoring that applies a boost if all search terms are a match
 class MatchAllTermsScoring extends SearchScoring {
+  @override
   void scoreTerm(FullTextSearch search, TermSearchResult term, Score current) =>
       current += Boost.amount(
           term.matchAll ? (term.matchedTerms.length * 0.5) : 0, "matchAll");
@@ -24,6 +25,7 @@ class MatchAllTermsScoring extends SearchScoring {
 /// Applies a linear boost based on the number of search terms that were matched.  See [MatchAllTermsScoring]
 class MatchedTermsScoring extends SearchScoring {
   const MatchedTermsScoring() : super();
+  @override
   void scoreTerm(FullTextSearch search, TermSearchResult term, Score current) =>
       current += Boost.amount(
         term.matchedTerms.length.toDouble(),
@@ -37,8 +39,8 @@ class MatchedTokensScoring extends SearchScoring {
   final Boost matchedTokenBoost;
   const MatchedTokensScoring(
       [this.matchedTokenBoost = const Boost.amount(1, "tokenPrefix")])
-      : assert(matchedTokenBoost != null),
-        super();
+      : super();
+  @override
   void scoreTerm(FullTextSearch search, TermSearchResult term, Score current) {
     for (final t in term.matchedTokens) {
       switch (t.key) {
@@ -65,6 +67,7 @@ class BoostTokenScoring extends SearchScoring {
 
   BoostTokenScoring(this.boosts);
 
+  @override
   void scoreTerm(FullTextSearch search, TermSearchResult term, Score current) {
     for (final t in term.matchedTokens) {
       final _boost = boosts[t.matchedToken.name];
@@ -79,7 +82,7 @@ class BoostTokenScoring extends SearchScoring {
 ///
 /// [Boost]s are added to the score.  Once the score has been calculated, you can't append any more boosts.
 class Score {
-  double _score;
+  double? _score;
   final List<Boost> boosts;
 
   Score.zero()
@@ -110,10 +113,10 @@ double _calculateScore(List<Boost> boosts) {
   int pctCount = 0;
   for (final boost in boosts) {
     if (boost.percent != null) {
-      percent += boost.percent;
+      percent += boost.percent!;
       pctCount++;
     } else if (boost.amount != null) {
-      amount += boost.amount;
+      amount += boost.amount!;
     }
   }
   return pctCount > 0 ? amount * (percent / pctCount) : amount;
@@ -121,8 +124,8 @@ double _calculateScore(List<Boost> boosts) {
 
 /// A single boost - can either be an amount, or a percent
 class Boost {
-  final double amount;
-  final double percent;
+  final double? amount;
+  final double? percent;
   final dynamic debugLabel;
 
   const Boost(this.amount, this.percent, [this.debugLabel]);
@@ -130,8 +133,8 @@ class Boost {
   const Boost.percent(this.percent, [this.debugLabel]) : amount = null;
 
   Boost times(double num, [dynamic debugLabel]) {
-    final amt = amount == null ? null : amount * num;
-    final pct = percent == null ? null : percent * num;
+    final amt = amount == null ? null : amount! * num;
+    final pct = percent == null ? null : percent! * num;
 
     return Boost(amt, pct, debugLabel);
   }
