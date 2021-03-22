@@ -1,3 +1,8 @@
+## [0.8.0+1]
+ * Renamed Token
+Updated fastlane
+Updated sunny_dart
+
 ## [0.7.5+1]
  * Added scripts
 Upgrade for null-safetey
