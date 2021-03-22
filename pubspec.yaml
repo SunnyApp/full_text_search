@@ -9,10 +9,9 @@ dependencies:
   equatable: ^2.0.0
   logging: ^1.0.0
   meta: ^1.3.0
-  sunny_dart: ^0.8.0+7
+  sunny_dart: ^0.9.0+1
   flutter: 
     sdk: flutter
 dev_dependencies: 
   flutter_test: 
     sdk: flutter
-flutter: null
