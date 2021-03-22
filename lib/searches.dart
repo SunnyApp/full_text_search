@@ -2,7 +2,7 @@
 import 'dart:core';
 
 import 'package:logging/logging.dart';
-import 'package:sunny_dart/sunny_dart.dart';
+import 'package:sunny_dart/sunny_dart.dart' hide Token;
 
 import 'matching.dart';
 import 'scoring.dart';
@@ -166,18 +166,14 @@ class FullTextSearch<T> {
         .toSet();
 
     Stream<TokenizedItem<T>> tokens = (search.items).map((item) {
-      final tokens = search
-          .tokenize(item)
-          .map((t) {
-            if (t == null) return null;
-            if (t is Token) {
-              return t;
-            } else {
-              return Token('$t');
-            }
-          })
-          .whereType<Token>()
-          .toSet();
+      final tokens = search.tokenize(item).map((t) {
+        if (t == null) return null;
+        if (t is FTSToken) {
+          return t;
+        } else {
+          return FTSToken('$t');
+        }
+      }).notNullSet();
       return TokenizedItem(tokens, item);
     });
     Stream<TermSearchResult<T>> matches =

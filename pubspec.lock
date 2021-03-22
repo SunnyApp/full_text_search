@@ -57,6 +57,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0"
+  dartx:
+    dependency: transitive
+    description:
+      name: dartx
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.7.1"
+  dartxx:
+    dependency: "direct main"
+    description:
+      name: dartxx
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.0+2"
   equatable:
     dependency: "direct main"
     description:
@@ -71,6 +85,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  flexidate:
+    dependency: transitive
+    description:
+      name: flexidate
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.0+1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -88,6 +109,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.5.3+1"
+  info_x:
+    dependency: transitive
+    description:
+      name: info_x
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.0+1"
   intl:
     dependency: transitive
     description:
@@ -101,7 +129,7 @@ packages:
       name: libphonenumber2
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.2+1"
+    version: "2.0.2+2"
   logging:
     dependency: "direct main"
     description:
@@ -208,10 +236,10 @@ packages:
   sunny_dart:
     dependency: "direct main"
     description:
-      path: "../sunny_dart"
-      relative: true
-    source: path
-    version: "0.8.0+6"
+      name: sunny_dart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.9.0+1"
   term_glyph:
     dependency: transitive
     description:
@@ -226,6 +254,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.19"
+  time:
+    dependency: transitive
+    description:
+      name: time
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   timezone:
     dependency: transitive
     description:
@@ -253,7 +288,7 @@ packages:
       name: uuid
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.0.2"
   vector_math:
     dependency: transitive
     description:
@@ -263,4 +298,4 @@ packages:
     version: "2.1.0"
 sdks:
   dart: ">=2.12.0 <3.0.0"
-  flutter: ">=1.10.0"
+  flutter: ">=1.17.0"

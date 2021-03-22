@@ -18,7 +18,7 @@ abstract class TermMatcher implements Comparable<TermMatcher> {
 
   /// Applies this matcher and returns one or more match results
   List<TermMatch> apply<T>(FullTextSearch<T> search, TokenizedItem<T> item,
-      String term, Token token);
+      String term, FTSToken token);
 }
 
 /// Provides the [Comparable] implementation for subclasses
@@ -35,7 +35,7 @@ mixin TermMatcherMixin implements TermMatcher {
 class StartsWithMatch with TermMatcherMixin {
   @override
   List<TermMatch> apply<T>(FullTextSearch<T> search, TokenizedItem<T> item,
-      String term, Token token) {
+      String term, FTSToken token) {
     term = term.toLowerCase();
     return [
       if (token.startsWith(term)) TermMatch.startsWith(term, token),
@@ -53,7 +53,7 @@ class StartsWithMatch with TermMatcherMixin {
 class ContainsMatch with TermMatcherMixin {
   @override
   List<TermMatch> apply<T>(FullTextSearch<T> search, TokenizedItem<T> item,
-      String term, Token token) {
+      String term, FTSToken token) {
     term = term.toLowerCase();
     return [
       if (term.length > 1 && token.contains(term))
@@ -72,7 +72,7 @@ class ContainsMatch with TermMatcherMixin {
 class EqualsMatch with TermMatcherMixin {
   @override
   List<TermMatch> apply<T>(FullTextSearch<T> search, TokenizedItem<T> item,
-      String term, Token token) {
+      String term, FTSToken token) {
     term = term.toLowerCase();
     return [
       if (token.equals(term)) TermMatch.equals(term, token),
@@ -98,15 +98,15 @@ abstract class TermMatch {
   String get term;
 
   /// The token that matched
-  Token get matchedToken;
+  FTSToken get matchedToken;
 
-  factory TermMatch.equals(String term, Token matchedToken) =>
+  factory TermMatch.equals(String term, FTSToken matchedToken) =>
       _TermMatch(EqualsMatch.matchKey, term, matchedToken);
-  factory TermMatch.contains(String term, Token matchedToken) =>
+  factory TermMatch.contains(String term, FTSToken matchedToken) =>
       _TermMatch(ContainsMatch.matchKey, term, matchedToken);
-  factory TermMatch.startsWith(String term, Token matchedToken) =>
+  factory TermMatch.startsWith(String term, FTSToken matchedToken) =>
       _TermMatch(StartsWithMatch.matchKey, term, matchedToken);
-  factory TermMatch.of(String key, String term, Token matchedToken) =>
+  factory TermMatch.of(String key, String term, FTSToken matchedToken) =>
       _TermMatch(key, term, matchedToken);
 }
 
@@ -121,7 +121,7 @@ class _TermMatch extends Equatable implements TermMatch {
 
   /// The token that matched
   @override
-  final Token matchedToken;
+  final FTSToken matchedToken;
 
   const _TermMatch(this.key, this.term, this.matchedToken);
 

@@ -76,7 +76,7 @@ class TermSearchResult<T> extends Equatable
 
 class TokenCheck extends Equatable {
   final String searchTerm;
-  final Token tokenToCheck;
+  final FTSToken tokenToCheck;
   final TokenCheckResult? result;
 
   const TokenCheck.check(this.searchTerm, this.tokenToCheck) : result = null;
@@ -122,11 +122,11 @@ extension TokenCheckResultExt on TokenCheckResult {
   }
 }
 
-class Token extends Equatable {
+class FTSToken extends Equatable {
   final String token;
   final String name;
 
-  Token(String token, {String? name})
+  FTSToken(String token, {String? name})
       : token = token.toLowerCase(),
         name = name ?? token;
 
@@ -151,22 +151,22 @@ class Token extends Equatable {
   }
 }
 
-extension TokenList on List<Token> {
+extension TokenList on List<FTSToken> {
   void addToken(String token, [String? name]) {
-    add(Token(token, name: name));
+    add(FTSToken(token, name: name));
   }
 
   void addNamed(String name, Iterable<String?> tokens) {
     for (final t in tokens) {
       if (t?.isNotEmpty == true) {
-        add(Token(t!, name: name));
+        add(FTSToken(t!, name: name));
       }
     }
   }
 }
 
 class TokenizedItem<T> extends Equatable {
-  final Set<Token> tokens;
+  final Set<FTSToken> tokens;
 
   final T result;
 
