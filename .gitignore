@@ -77,3 +77,6 @@ fastlane/report.xml
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 lcov.info
 coverage
+
+# For flutter plugins, ignore this file - it makes too much noise
+Gemfile.lock
