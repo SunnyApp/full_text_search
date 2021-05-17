@@ -1,3 +1,6 @@
+## [0.8.0+2]
+ * Updated dependencies
+
 ## [0.8.0+1]
  * Renamed Token
 Updated fastlane

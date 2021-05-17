@@ -1,5 +1,5 @@
 name: full_text_search
-version: 0.8.0+1
+version: 0.8.0+2
 homepage: https://github.com/SunnyApp/full_text_search
 description: Full-text search that takes advantages of isolates to prevent locking the main thread
 environment: 
