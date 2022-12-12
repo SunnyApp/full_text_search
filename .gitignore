@@ -80,3 +80,4 @@ coverage
 
 # For flutter plugins, ignore this file - it makes too much noise
 Gemfile.lock
+/pubspec_overrides.yaml

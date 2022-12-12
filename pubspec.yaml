@@ -7,12 +7,12 @@ environment:
 dependencies: 
   collection: ^1.16.0
   equatable: ^2.0.5
-  logging: ^1.0.2
+  logging: ^1.1.0
   meta: ^1.8.0
   sunny_dart: 
-    path: /Users/ericm/sunny/local_plugins/sunny_dart
+    path: /Users/ericm/reliveit/checkout/SunnyApp/sunny_dart
   dartxx: 
-    path: /Users/ericm/sunny/local_plugins/dartxx
+    path: /Users/ericm/reliveit/checkout/ericmartineau/dartxx
   flutter: 
     sdk: flutter
 dev_dependencies: 

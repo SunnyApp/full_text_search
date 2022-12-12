@@ -16,7 +16,6 @@ analyzer:
     - "test_driver/**"
   enable-experiment:
     - variance
-    - nonfunction-type-aliases
   errors:
     annotate_overrides: info
     always_declare_return_types: info
