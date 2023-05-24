@@ -5,10 +5,10 @@ description: Full-text search that takes advantages of isolates to prevent locki
 environment: 
   sdk: '>=2.13.0 <3.0.0'
 dependencies: 
-  collection: ^1.16.0
+  collection: ^1.17.1
   equatable: ^2.0.5
-  logging: ^1.1.0
-  meta: ^1.8.0
+  logging: ^1.1.1
+  meta: ^1.9.0
   sunny_dart: 
     path: /Users/ericm/reliveit/checkout/SunnyApp/sunny_dart
   dartxx: 
