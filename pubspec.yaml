@@ -5,14 +5,14 @@ description: Full-text search that takes advantages of isolates to prevent locki
 environment: 
   sdk: '>=2.13.0 <3.0.0'
 dependencies: 
-  collection: ^1.17.1
+  collection: ^1.17.2
   equatable: ^2.0.5
-  logging: ^1.1.1
-  meta: ^1.9.0
+  logging: 1.2.0
+  meta: ^1.9.1
   sunny_dart: 
-    path: /Users/ericm/reliveit/checkout/SunnyApp/sunny_dart
+    path: /Users/ericm/aesthetika/checkout/SunnyApp/sunny_dart
   dartxx: 
-    path: /Users/ericm/reliveit/checkout/ericmartineau/dartxx
+    path: /Users/ericm/aesthetika/checkout/ericmartineau/dartxx
   flutter: 
     sdk: flutter
 dev_dependencies: 
